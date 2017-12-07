@@ -7,17 +7,24 @@ import (
 // 排序去重
 func main() {
 	var array = []int{20, 40, 32, 67, 40, 20, 89, 300, 400, 15}
-	var Reversal_array []int
+	fmt.Println("原数组:", array)
 	// 排序
 	quickSort(array)
-	fmt.Println(array)
+	fmt.Println("排序后:", array)
 
-	for _, v := range array {
-		fmt.Println(v)
+	// 去重
+	var array_new []int
+	for i := 0; i < len(array); i++ {
+		if i+1 < len(array) && array[i] != array[i+1] {
+			array_new = append(array_new, array[i])
+		} else if i+1 == len(array) {
+			array_new = append(array_new, array[i])
+		}
 	}
-	fmt.Println(Reversal_array)
+	fmt.Println("排序去重:", array_new)
 }
 
+// 排序
 func quickSort(nums []int) {
 	if len(nums) <= 1 {
 		return
